@@ -19,8 +19,6 @@ A maybe array is an array of one value (just(value)) or zero values (Nothing).
 * **param**  {Any} value
 * **returns** {Array}
 
-const toMaybe = value => [value].filter(exists);
-
 
 ##  maybe = (b, f: a => b) => Maybe[a] => b
 
@@ -32,8 +30,6 @@ the fallback and function first, then return a function which takes the Maybe.
 * **param**  {Any} fallback A default fallback
 * **param**  {Function}   A function to map over the value
 * **returns** {Function}   A function that takes a Maybe and returns the map result
-
-const maybe = (fallback, f) => Maybe => Maybe.map(f)[0] || fallback;
 
 
 ##  values = (list: [...Maybe]) => [...Any]

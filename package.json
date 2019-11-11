@@ -1,0 +1,25 @@
+{
+  "name": "maybearray",
+  "version": "1.0.0",
+  "description": "JavaScript native Maybes using Arrays",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "6.6.0",
+    "eslint-config-prettier": "6.5.0",
+    "eslint-plugin-prettier": "3.1.1",
+    "esm": "3.2.25",
+    "prettier": "1.19.1",
+    "riteway": "6.1.1",
+    "tap-nirvana": "1.1.0",
+    "watch": "1.0.2"
+  },
+  "scripts": {
+    "lint": "eslint --fix . && echo 'Lint complete.'",
+    "test": "node -r esm src/index.test.js",
+    "watch": "watch 'npm run -s test | tap-nirvana && npm run -s lint' src"
+  },
+  "keywords": [],
+  "author": "Eric Elliott",
+  "license": "MIT"
+}

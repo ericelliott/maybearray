@@ -2,7 +2,7 @@
   "name": "maybearray",
   "version": "1.0.0",
   "description": "JavaScript native Maybes using Arrays",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint .",
     "watchlint": "eslint --fix . && echo 'Lint complete.'",

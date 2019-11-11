@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "JavaScript native Maybes using Arrays",
   "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "watchlint": "eslint --fix . && echo 'Lint complete.'",
+    "test": "node -r esm src/index.test.js && npm run -s lint",
+    "watch": "watch 'npm run -s test | tap-nirvana && npm run -s watchlint' src"
+  },
   "dependencies": {},
   "devDependencies": {
     "eslint": "6.6.0",
@@ -13,11 +19,6 @@
     "riteway": "6.1.1",
     "tap-nirvana": "1.1.0",
     "watch": "1.0.2"
-  },
-  "scripts": {
-    "lint": "eslint --fix . && echo 'Lint complete.'",
-    "test": "node -r esm src/index.test.js",
-    "watch": "watch 'npm run -s test | tap-nirvana && npm run -s lint' src"
   },
   "keywords": [],
   "author": "Eric Elliott",

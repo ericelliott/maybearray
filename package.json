@@ -12,7 +12,7 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "6.6.0",
-    "eslint-config-prettier": "6.6.0",
+    "eslint-config-prettier": "6.7.0",
     "eslint-plugin-prettier": "3.1.1",
     "esm": "3.2.25",
     "prettier": "1.19.1",

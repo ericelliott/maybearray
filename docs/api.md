@@ -26,6 +26,14 @@ This function is curried.</p>
 The returned function will apply the fallback function if <code>value</code> does not exist.
 Otherwise, it will apply <code>f</code> to <code>value</code> and return the result.</p>
 </dd>
+<dt><a href="#branch">branch(predicate, left, right)</a> ⇒ <code>function</code></dt>
+<dd><p>Take a predicate function (a function that returns a boolean),
+a left function, a right function, and a value to test with the
+predicate function.</p>
+<p>If the predicate returns false, apply the left function to the value.
+If the predicate returns true, apply the right function to the value.</p>
+<p>Mnemonic hint: Truth is right.</p>
+</dd>
 <dt><a href="#values">values(list)</a> ⇒ <code>Array</code></dt>
 <dd><p>Take a list of maybes and return a list of Just values, excluding Nothings.</p>
 </dd>
@@ -94,6 +102,26 @@ Otherwise, it will apply `f` to `value` and return the result.
 | --- | --- | --- |
 | fallbackFn | <code>function</code> | A function to call if value does not exist (undefined, null) |
 | f | <code>function</code> | A function to apply to the value if the value does exist. |
+
+<a name="branch"></a>
+
+## branch(predicate, left, right) ⇒ <code>function</code>
+Take a predicate function (a function that returns a boolean),
+a left function, a right function, and a value to test with the
+predicate function.
+
+If the predicate returns false, apply the left function to the value.
+If the predicate returns true, apply the right function to the value.
+
+Mnemonic hint: Truth is right.
+
+**Returns**: <code>function</code> - A function (value:Any) => Any  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| predicate | <code>function</code> | A boolean returing function to evaluate the value |
+| left | <code>function</code> | A function to apply if the value is false |
+| right | <code>function</code> | A function to apply if the value is true |
 
 <a name="values"></a>
 

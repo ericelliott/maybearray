@@ -50,6 +50,24 @@ const fallback = (fallbackFn, f) => value =>
   exists(value) ? f(value) : fallbackFn();
 
 /**
+ * Take a predicate function (a function that returns a boolean),
+ * a left function, a right function, and a value to test with the
+ * predicate function.
+ *
+ * If the predicate returns false, apply the left function to the value.
+ * If the predicate returns true, apply the right function to the value.
+ *
+ * Mnemonic hint: Truth is right.
+ *
+ * @param {Function} predicate A boolean returing function to evaluate the value
+ * @param {Function} left  A function to apply if the value is false
+ * @param {Function} right A function to apply if the value is true
+ * @return {Function}      A function (value:Any) => Any
+ */
+const branch = (predicate, left, right) => value =>
+  predicate(value) ? right(value) : left(value);
+
+/**
  * Take a list of maybes and return a list of Just values, excluding Nothings.
  * @param  {Array} list An array of Maybes
  * @return {Array}      An array of Just values
@@ -61,6 +79,7 @@ module.exports = {
   maybe,
   values,
   fallback,
+  branch,
   isJust,
   isNothing
 };

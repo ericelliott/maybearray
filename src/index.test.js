@@ -6,7 +6,8 @@ import {
   values,
   fallback,
   isJust,
-  isNothing
+  isNothing,
+  branch
 } from './index.js';
 
 describe('toMaybe', async assert => {
@@ -176,5 +177,51 @@ describe('isNothing', async assert => {
     should: 'return true',
     actual: isNothing(toMaybe()),
     expected: true
+  });
+});
+
+describe('branch', async assert => {
+  assert({
+    given: 'predicate returning false',
+    should: 'apply the Left branch to the value',
+    actual: branch(
+      x => x,
+      value => `Left ${value}`,
+      () => 'Right'
+    )(false),
+    expected: 'Left false'
+  });
+
+  assert({
+    given: 'a predicate returning true',
+    should: 'apply the Right branch to the value',
+    actual: branch(
+      x => x,
+      () => 'Left',
+      value => `Right ${value}`
+    )(true),
+    expected: 'Right true'
+  });
+
+  assert({
+    given: 'a predicate that returning true',
+    should: 'apply the Right branch',
+    actual: branch(
+      x => x % 2 === 0,
+      () => 'Left',
+      () => 'Right'
+    )(4),
+    expected: 'Right'
+  });
+
+  assert({
+    given: 'a predicate that returning false',
+    should: 'apply the Right branch',
+    actual: branch(
+      x => x % 2 === 0,
+      () => 'Left',
+      () => 'Right'
+    )(5),
+    expected: 'Left'
   });
 });

@@ -1,5 +1,20 @@
 const exists = x => x != null;
-const isJust = x => exists(x) && x.length;
+
+/**
+ * Take a value and return true if the value is an array of a single
+ * value, which Maybearray uses to represent Just(value)
+ * @param {*} x A value to check
+ * @return {Boolean}
+ */
+const isJust = x => exists(x) && x.length === 1;
+
+/**
+ * Take a value and return true if the value is an empty array,
+ * which Maybearray uses to represent Nothing().
+ * @param {*} x A value to check
+ * @return {Boolean}
+ */
+const isNothing = x => Array.isArray(x) && x.length === 0;
 
 /**
  * Take a value, undefined, or null, and lift
@@ -45,5 +60,7 @@ module.exports = {
   toMaybe,
   maybe,
   values,
-  fallback
+  fallback,
+  isJust,
+  isNothing
 };

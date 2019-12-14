@@ -56,6 +56,7 @@ This function is curried.
 Apply a fallback function if `value` does not exist.
 Otherwise, apply `f` to `value`.
 
+**Returns**: <code>function</code> - A function that takes a value and applies the appropriate function.  
 
 | Param | Type | Description |
 | --- | --- | --- |

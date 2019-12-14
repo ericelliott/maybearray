@@ -28,7 +28,7 @@ const maybe = (fallback, f) => Maybe =>
  * Otherwise, apply `f` to `value`.
  * @param {Function} fallbackFn A function to call if value does not exist (undefined, null)
  * @param {*} f A function to apply to the value if the value does exist.
- * @returns {Function}
+ * @returns {Function} A function that takes a value and applies the appropriate function.
  */
 const fallback = (fallbackFn, f) => value =>
   exists(value) ? f(value) : fallbackFn();

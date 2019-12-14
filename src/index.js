@@ -60,8 +60,8 @@ const fallback = (fallbackFn, f) => value =>
  * Mnemonic hint: Truth is right.
  *
  * @param {Function} predicate A boolean returing function to evaluate the value
- * @param {Function} left  A function to run if the value is false
- * @param {Function} right A function to run if the value is true
+ * @param {Function} left  A function to apply if the value is false
+ * @param {Function} right A function to apply if the value is true
  * @return {Function}      A function (value:Any) => Any
  */
 const branch = (predicate, left, right) => value =>

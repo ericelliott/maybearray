@@ -120,8 +120,8 @@ Mnemonic hint: Truth is right.
 | Param | Type | Description |
 | --- | --- | --- |
 | predicate | <code>function</code> | A boolean returing function to evaluate the value |
-| left | <code>function</code> | A function to run if the value is false |
-| right | <code>function</code> | A function to run if the value is true |
+| left | <code>function</code> | A function to apply if the value is false |
+| right | <code>function</code> | A function to apply if the value is true |
 
 <a name="values"></a>
 

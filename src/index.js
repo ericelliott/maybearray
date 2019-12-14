@@ -12,7 +12,7 @@ const isJust = x => exists(x) && x.length;
 const toMaybe = (value = undefined) => [value].filter(exists);
 
 /**
- * Take a fallback value, a function to map over, and a maybe.
+ * Take a fallback (type: `Any`), a function to map over, and a maybe.
  * If the maybe contains a value, return the result of applying
  * the function to the value. Otherwise, return the fallback value.
  * This function is curried.
@@ -28,7 +28,7 @@ const maybe = (fallback, f) => Maybe =>
  * The returned function will apply the fallback function if `value` does not exist.
  * Otherwise, it will apply `f` to `value` and return the result.
  * @param {Function} fallbackFn A function to call if value does not exist (undefined, null)
- * @param {*} f A function to apply to the value if the value does exist.
+ * @param {Function} f A function to apply to the value if the value does exist.
  * @returns {Function} A function that takes a value and applies the appropriate function.
  */
 const fallback = (fallbackFn, f) => value =>

@@ -1,6 +1,6 @@
 import { describe } from 'riteway';
 
-import { toMaybe, maybe, values } from './index.js';
+import { toMaybe, maybe, values, fallback } from './index.js';
 
 describe('toMaybe', async assert => {
   assert({
@@ -55,6 +55,13 @@ describe('maybe', async assert => {
     actual: maybeDouble([]),
     expected: 0
   });
+
+  assert({
+    given: 'A funciton that returns zero',
+    should: 'not return the fallback value',
+    actual: maybe(100, x => x * 2)([0]),
+    expected: 0
+  });
 });
 
 describe('values', async assert => {
@@ -66,5 +73,55 @@ describe('values', async assert => {
     should: 'return a list of just values',
     actual: values(maybes),
     expected: justValues
+  });
+});
+
+describe('fallback', async assert => {
+  // We want to avoid:
+  // reportBalance(notLoaded) // 'You have $undefined'
+
+  const reportBalance = balance => `You have $${balance}`;
+  const notLoadedBalance = undefined;
+  const hasLoadedBalance = 100;
+
+  let checkMainCall = 'main function not called';
+  const loading = fallback(
+    () => 'Loading...',
+    () => {
+      checkMainCall = 'Error! Called main function!';
+    }
+  )(notLoadedBalance); // "Loading..."
+
+  assert({
+    given: 'an undefined value',
+    should: 'apply the fallback function',
+    actual: loading,
+    expected: 'Loading...'
+  });
+
+  assert({
+    given: 'an undefined value',
+    should: 'not call the main function',
+    actual: checkMainCall,
+    expected: 'main function not called'
+  });
+
+  let checkFallbackCall = 'fallback not called';
+  const loaded = fallback(() => {
+    checkFallbackCall = 'Error! Called fallback function!';
+  }, reportBalance)(hasLoadedBalance); // You have $100
+
+  assert({
+    given: 'an existing value',
+    should: 'apply the primary function',
+    actual: loaded,
+    expected: 'You have $100'
+  });
+
+  assert({
+    given: 'an existing value',
+    should: 'not call the fallback function',
+    actual: checkFallbackCall,
+    expected: 'fallback not called'
   });
 });

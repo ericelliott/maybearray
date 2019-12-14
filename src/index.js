@@ -74,12 +74,28 @@ const branch = (predicate, left, right) => value =>
  */
 const values = list => [].concat(...list.filter(isJust));
 
+/**
+ * Take an object with:
+ *  a Just function (a function that take an unwrapped value and return any),
+ *  a Nothing function (a function that take no arguments and return any).
+ *
+ * If Maybe is Nothing, apply the Just function to the value (Maybe[0])
+ * Otherwise, apply the just function
+ *
+ * @param {{ Just: any => any, Nothing: () => any }}
+ * @return {Function} A function (Maybe) => Any
+ *
+ */
+const caseof = ({ Just, Nothing }) => Maybe =>
+  isNothing(Maybe) ? Nothing() : Just(Maybe[0]);
+
 module.exports = {
   toMaybe,
   maybe,
   values,
   fallback,
   branch,
+  caseof,
   isJust,
   isNothing
 };

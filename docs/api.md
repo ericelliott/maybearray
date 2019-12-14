@@ -1,6 +1,14 @@
 ## Functions
 
 <dl>
+<dt><a href="#isJust">isJust(x)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>Take a value and return true if the value is an array of a single
+value, which Maybearray uses to represent Just(value)</p>
+</dd>
+<dt><a href="#isNothing">isNothing(x)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>Take a value and return true if the value is an empty array,
+which Maybearray uses to represent Nothing().</p>
+</dd>
 <dt><a href="#toMaybe">toMaybe(value)</a> ⇒ <code>Array</code></dt>
 <dd><p>Take a value, undefined, or null, and lift
 it to a maybe array.
@@ -22,6 +30,28 @@ Otherwise, it will apply <code>f</code> to <code>value</code> and return the res
 <dd><p>Take a list of maybes and return a list of Just values, excluding Nothings.</p>
 </dd>
 </dl>
+
+<a name="isJust"></a>
+
+## isJust(x) ⇒ <code>Boolean</code>
+Take a value and return true if the value is an array of a single
+value, which Maybearray uses to represent Just(value)
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| x | <code>\*</code> | A value to check |
+
+<a name="isNothing"></a>
+
+## isNothing(x) ⇒ <code>Boolean</code>
+Take a value and return true if the value is an empty array,
+which Maybearray uses to represent Nothing().
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| x | <code>\*</code> | A value to check |
 
 <a name="toMaybe"></a>
 

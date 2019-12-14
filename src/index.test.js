@@ -1,6 +1,13 @@
 import { describe } from 'riteway';
 
-import { toMaybe, maybe, values, fallback } from './index.js';
+import {
+  toMaybe,
+  maybe,
+  values,
+  fallback,
+  isJust,
+  isNothing
+} from './index.js';
 
 describe('toMaybe', async assert => {
   assert({
@@ -123,5 +130,51 @@ describe('fallback', async assert => {
     should: 'not call the fallback function',
     actual: checkFallbackCall,
     expected: 'fallback not called'
+  });
+});
+
+describe('isJust', async assert => {
+  assert({
+    given: 'Just(0)',
+    should: 'return true',
+    actual: isJust(toMaybe(0)),
+    expected: true
+  });
+
+  assert({
+    given: 'Just([])',
+    should: 'return true',
+    actual: isJust(toMaybe([])),
+    expected: true
+  });
+
+  assert({
+    given: 'Nothing()',
+    should: 'return false',
+    actual: isJust(toMaybe()),
+    expected: false
+  });
+});
+
+describe('isNothing', async assert => {
+  assert({
+    given: 'Just(0)',
+    should: 'return false',
+    actual: isNothing(toMaybe(0)),
+    expected: false
+  });
+
+  assert({
+    given: 'Just([])',
+    should: 'return false',
+    actual: isNothing(toMaybe([])),
+    expected: false
+  });
+
+  assert({
+    given: 'Nothing()',
+    should: 'return true',
+    actual: isNothing(toMaybe()),
+    expected: true
   });
 });

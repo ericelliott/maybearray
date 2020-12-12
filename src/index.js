@@ -82,9 +82,20 @@ const values = list => [].concat(...list.filter(isJust));
  * If Maybe is Nothing, the Nothing function is applied
  * Otherwise, the Just function is applied to the value (Maybe[0])
  * 
+ * Example:
+ * ```javascript
+ * const withDefault = defaultValue => caseof({
+ *  Just: (value) => value,
+ *  Nothing: () => defaultValue
+ * });
+ * 
+ * withDefault('')(toMaybe(null)) // ''
+ * withDefault('')(toMaybe('foo')) // foo
+ * ```
+ * 
  * Hint: This is just a fancy way to do branching
  *
- * @param {{ Just: any => any, Nothing: () => any }} caseofObject
+ * @param {Object} caseofObject
  * @return {Function} A function (value:Any) => Any
  *
  */

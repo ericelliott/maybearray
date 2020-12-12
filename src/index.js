@@ -76,14 +76,16 @@ const values = list => [].concat(...list.filter(isJust));
 
 /**
  * Take an object with:
- *  a Just function (a function that take an unwrapped value and return any),
- *  a Nothing function (a function that take no arguments and return any).
+ *  a Just function (a function that takes an unwrapped value and returns any),
+ *  a Nothing function (a function that takes no arguments and returns any).
  *
- * If Maybe is Nothing, apply the Just function to the value (Maybe[0])
- * Otherwise, apply the just function
+ * If Maybe is Nothing, the Nothing function is applied
+ * Otherwise, the Just function is applied to the value (Maybe[0])
+ * 
+ * Hint: This is just a fancy way to do branching
  *
- * @param {{ Just: any => any, Nothing: () => any }}
- * @return {Function} A function (Maybe) => Any
+ * @param {{ Just: any => any, Nothing: () => any }} caseofObject
+ * @return {Function} A function (value:Any) => Any
  *
  */
 const caseof = ({ Just, Nothing }) => Maybe =>

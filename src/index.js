@@ -80,7 +80,7 @@ const values = list => [].concat(...list.filter(isJust));
  *  a Nothing function (a function that takes no arguments and returns any).
  *
  * If Maybe is Nothing, the Nothing function is applied
- * Otherwise, the Just function is applied to the value (Maybe[0])
+ * otherwise, the Just function is applied to the value (Maybe[0])
  * 
  * Example:
  * ```javascript
@@ -95,7 +95,7 @@ const values = list => [].concat(...list.filter(isJust));
  * 
  * Hint: This is just a fancy way to do branching
  *
- * @param {Object} caseofObject
+ * @param {Object} caseofObject An Object like { Just: (Any -> Any), Nothing: Function }
  * @return {Function} A function (value:Any) => Any
  *
  */

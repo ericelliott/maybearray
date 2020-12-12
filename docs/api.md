@@ -42,7 +42,7 @@ If the predicate returns true, apply the right function to the value.</p>
  a Just function (a function that takes an unwrapped value and returns any),
  a Nothing function (a function that takes no arguments and returns any).</p>
 <p>If Maybe is Nothing, the Nothing function is applied
-Otherwise, the Just function is applied to the value (Maybe[0])</p>
+otherwise, the Just function is applied to the value (Maybe[0])</p>
 <p>Example:</p>
 <pre><code class="language-javascript">const withDefault = defaultValue =&gt; caseof({
  Just: (value) =&gt; value,
@@ -158,7 +158,7 @@ Take an object with:
  a Nothing function (a function that takes no arguments and returns any).
 
 If Maybe is Nothing, the Nothing function is applied
-Otherwise, the Just function is applied to the value (Maybe[0])
+otherwise, the Just function is applied to the value (Maybe[0])
 
 Example:
 ```javascript
@@ -175,7 +175,7 @@ Hint: This is just a fancy way to do branching
 
 **Returns**: <code>function</code> - A function (value:Any) => Any  
 
-| Param | Type |
-| --- | --- |
-| caseofObject | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| caseofObject | <code>Object</code> | An Object like { Just: (Any -> Any), Nothing: Function } |
 

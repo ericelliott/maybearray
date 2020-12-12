@@ -79,8 +79,8 @@ const values = list => [].concat(...list.filter(isJust));
  *  a Just function (a function that takes an unwrapped value and returns any),
  *  a Nothing function (a function that takes no arguments and returns any).
  *
- * If Maybe is Nothing, the Nothing function is applied
- * otherwise, the Just function is applied to the value (Maybe[0])
+ * If Maybe is Nothing, the Nothing function is applied.
+ * Otherwise, the Just function is applied to the value (Maybe[0])
  * 
  * Example:
  * ```javascript

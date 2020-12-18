@@ -74,12 +74,37 @@ const branch = (predicate, left, right) => value =>
  */
 const values = list => [].concat(...list.filter(isJust));
 
+/**
+ * Take an object with:
+ *  a Just function (a function that takes an unwrapped value and returns any),
+ *  a Nothing function (a function that takes no arguments and returns any).
+ *
+ * If Maybe is Nothing, the Nothing function is applied.
+ * Otherwise, the Just function is applied to the value (Maybe[0]).
+ * Example:
+ * ```javascript
+ * const withDefault = defaultValue => caseof({
+ *  Just: (value) => value,
+ *  Nothing: () => defaultValue
+ * });
+ * withDefault('')(toMaybe(null)) // ''
+ * withDefault('')(toMaybe('foo')) // foo
+ * ```
+ * Hint: This is just a fancy way to do branching
+ *
+ * @param {Object} caseofObject An Object like { Just: (Any -> Any), Nothing: Function }
+ * @return {Function} A function (value:Any) => Any
+ */
+const caseof = ({ Just, Nothing }) => Maybe =>
+  isNothing(Maybe) ? Nothing() : Just(Maybe[0]);
+
 module.exports = {
   toMaybe,
   maybe,
   values,
   fallback,
   branch,
+  caseof,
   isJust,
   isNothing
 };

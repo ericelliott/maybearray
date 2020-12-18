@@ -7,7 +7,8 @@ import {
   fallback,
   isJust,
   isNothing,
-  branch
+  branch,
+  caseof
 } from './index.js';
 
 describe('toMaybe', async assert => {
@@ -177,6 +178,38 @@ describe('isNothing', async assert => {
     should: 'return true',
     actual: isNothing(toMaybe()),
     expected: true
+  });
+});
+
+describe('caseof', async assert => {
+  assert({
+    given: 'a maybe that is Nothing',
+    should: 'apply the Nothing function',
+    actual: caseof({
+      Just: value => `Just ${value}`,
+      Nothing: () => 'Nothing'
+    })(toMaybe()),
+    expected: 'Nothing'
+  });
+
+  assert({
+    given: 'a maybe that is not Nothing',
+    should: 'apply the Just function to the value',
+    actual: caseof({
+      Just: value => `Just ${value}`,
+      Nothing: () => 'Nothing'
+    })(toMaybe([1])),
+    expected: 'Just 1'
+  });
+
+  assert({
+    given: 'a maybe that is not Nothing',
+    should: 'apply the Just function',
+    actual: caseof({
+      Just: () => `Just`,
+      Nothing: () => 'Nothing'
+    })(toMaybe([1])),
+    expected: 'Just'
   });
 });
 

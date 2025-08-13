@@ -18,7 +18,7 @@
     "esm": "3.2.25",
     "jsdoc-to-markdown": "7.0.1",
     "prettier": "1.19.1",
-    "riteway": "6.2.1",
+    "riteway": "7.1.0",
     "tap-nirvana": "1.1.0",
     "watch": "1.0.2"
   },
